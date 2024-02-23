@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+  http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- copiar parent-->
+
+  <groupId>org.example</groupId>
+  <artifactId>ads4-projeto-maven</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <junit.version>3.8.1</junit.version>
+  </properties>
+
+  <name>ads4-projeto-maven</name>
+  <url>http://maven.apache.org</url>
+
+  <organization>
+    <name>Faculdade Senai Fatesg</name>
+    <url>https://senaigoias.com.br/faculdade-fatesg</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>1</id>
+      <name>Bruno Urbano Rodrigues</name>
+      <email>brunourb@gmail.com</email>
+      <url>www.linkedin.com/in/brunourbano</url>
+      <organization>Empresa 1</organization>
+      <organizationUrl>http://organizationUrl</organizationUrl>
+      <roles>
+        <role>Desenvolvedor</role>
+        <role>Arquiteto de Soluçao</role>
+        <role>Mandrake</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <dependencies>
+    <!-- copiar dependencias-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <!-- copiar plugins-->
+</project>
