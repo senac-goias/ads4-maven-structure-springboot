@@ -1,3 +1,6 @@
+jr:
+  name: "João Paulo"
+
 
 project:
   name: '@project.artifactId@'
