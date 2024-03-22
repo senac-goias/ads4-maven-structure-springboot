@@ -26,7 +26,7 @@ public class ProfessorResource implements IResource<Professor, Integer> {
      */
     @Override
     public Professor create(Professor entity) {
-        return null;
+        return professorService.create(entity);
     }
 
     /**
@@ -37,7 +37,7 @@ public class ProfessorResource implements IResource<Professor, Integer> {
      */
     @Override
     public Professor get(Integer id) {
-        return null;
+        return professorService.get(id);
     }
 
     /**
@@ -47,7 +47,7 @@ public class ProfessorResource implements IResource<Professor, Integer> {
      */
     @Override
     public List<Professor> get() {
-        return null;
+        return professorService.get();
     }
 
     /**
@@ -59,7 +59,7 @@ public class ProfessorResource implements IResource<Professor, Integer> {
      */
     @Override
     public Professor update(Integer id, Professor entity) {
-        return null;
+        return professorService.update(id,entity);
     }
 
     /**
@@ -69,6 +69,6 @@ public class ProfessorResource implements IResource<Professor, Integer> {
      */
     @Override
     public void delete(Integer id) {
-
+        professorService.delete(id);
     }
 }

@@ -26,7 +26,7 @@ public class DisciplinaResource implements IResource<Disciplina, Integer> {
      */
     @Override
     public Disciplina create(Disciplina entity) {
-        return null;
+        return disciplinaService.create(entity);
     }
 
     /**
@@ -37,7 +37,8 @@ public class DisciplinaResource implements IResource<Disciplina, Integer> {
      */
     @Override
     public Disciplina get(Integer id) {
-        return null;
+
+        return disciplinaService.get(id);
     }
 
     /**
@@ -47,7 +48,7 @@ public class DisciplinaResource implements IResource<Disciplina, Integer> {
      */
     @Override
     public List<Disciplina> get() {
-        return null;
+        return disciplinaService.get();
     }
 
     /**
@@ -59,7 +60,7 @@ public class DisciplinaResource implements IResource<Disciplina, Integer> {
      */
     @Override
     public Disciplina update(Integer id, Disciplina entity) {
-        return null;
+        return disciplinaService.update(id,entity);
     }
 
     /**
@@ -69,6 +70,6 @@ public class DisciplinaResource implements IResource<Disciplina, Integer> {
      */
     @Override
     public void delete(Integer id) {
-
+        disciplinaService.delete(id);
     }
 }

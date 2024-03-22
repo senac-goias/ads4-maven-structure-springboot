@@ -2,23 +2,31 @@ package org.example.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.interfaces.IService;
+import org.example.model.Disciplina;
 import org.example.model.Professor;
+import org.example.repository.ProfessorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Slf4j //nos ajuda a escrever log no projeto
 @Service //indica que é uma camada de serviço(negócio)
 public class ProfessorService implements IService<Professor, Integer> {
+
+    @Autowired
+    private ProfessorRepository professorRepository;
     /**
      * Mètodo para criar T
      *
      * @param entity
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Professor create(Professor entity) {
-        return null;
+        return professorRepository.save(entity);
     }
 
     /**
@@ -29,7 +37,7 @@ public class ProfessorService implements IService<Professor, Integer> {
      */
     @Override
     public Professor get(Integer id) {
-        return null;
+        return professorRepository.findById(id).orElse(new Professor());
     }
 
     /**
@@ -39,7 +47,7 @@ public class ProfessorService implements IService<Professor, Integer> {
      */
     @Override
     public List<Professor> get() {
-        return null;
+        return professorRepository.findAll();
     }
 
     /**
@@ -49,9 +57,18 @@ public class ProfessorService implements IService<Professor, Integer> {
      * @param entity
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Professor update(Integer id, Professor entity) {
-        return null;
+        Professor professorEncontrado = this.get(id);
+
+        if(professorEncontrado.getId()!=0 || professorEncontrado.getId()!=null){
+            return professorRepository.save(entity);
+        }
+        else{
+            //return null;
+            return new Professor();
+        }
     }
 
     /**
@@ -61,6 +78,6 @@ public class ProfessorService implements IService<Professor, Integer> {
      */
     @Override
     public void delete(Integer id) {
-
+        professorRepository.deleteById(id);
     }
 }

@@ -49,6 +49,7 @@ public class AlunoResource implements IResource<Aluno, Integer> {
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @Override
     public Aluno get(@PathVariable Integer id) {
+        
         return alunoService.get(id);
     }
 

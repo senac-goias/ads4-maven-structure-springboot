@@ -2,8 +2,12 @@ package org.example.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.interfaces.IService;
+import org.example.model.Aluno;
 import org.example.model.Disciplina;
+import org.example.repository.DisciplinaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,16 +15,18 @@ import java.util.List;
 @Service //indica que é uma camada de serviço(negócio)
 public class DisciplinaService implements IService<Disciplina, Integer> {
 
-
+    @Autowired
+    private DisciplinaRepository disciplinaRepository;
     /**
      * Mètodo para criar T
      *
      * @param entity
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Disciplina create(Disciplina entity) {
-        return null;
+        return disciplinaRepository.save(entity);
     }
 
     /**
@@ -31,7 +37,7 @@ public class DisciplinaService implements IService<Disciplina, Integer> {
      */
     @Override
     public Disciplina get(Integer id) {
-        return null;
+        return disciplinaRepository.findById(id).orElse(new Disciplina());
     }
 
     /**
@@ -41,7 +47,7 @@ public class DisciplinaService implements IService<Disciplina, Integer> {
      */
     @Override
     public List<Disciplina> get() {
-        return null;
+        return disciplinaRepository.findAll();
     }
 
     /**
@@ -51,9 +57,18 @@ public class DisciplinaService implements IService<Disciplina, Integer> {
      * @param entity
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Disciplina update(Integer id, Disciplina entity) {
-        return null;
+        Disciplina disciplinaEncontrada = this.get(id);
+
+        if(disciplinaEncontrada.getId()!=0 || disciplinaEncontrada.getId()!=null){
+            return disciplinaRepository.save(entity);
+        }
+        else{
+            //return null;
+            return new Disciplina();
+        }
     }
 
     /**
@@ -61,8 +76,9 @@ public class DisciplinaService implements IService<Disciplina, Integer> {
      *
      * @param id
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void delete(Integer id) {
-
+        disciplinaRepository.deleteById(id);
     }
 }
