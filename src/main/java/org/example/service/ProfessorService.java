@@ -76,6 +76,7 @@ public class ProfessorService implements IService<Professor, Integer> {
      *
      * @param id
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void delete(Integer id) {
         professorRepository.deleteById(id);

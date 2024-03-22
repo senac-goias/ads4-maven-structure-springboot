@@ -6,6 +6,7 @@ import org.example.model.Aluno;
 import org.example.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +24,7 @@ public class AlunoService implements IService<Aluno, Integer> {
      * @param entity
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Aluno create(Aluno entity) {
         return alunoRepository.save(entity);
@@ -62,6 +64,7 @@ public class AlunoService implements IService<Aluno, Integer> {
      * @param entity
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Aluno update(Integer id, Aluno entity) {
 
@@ -81,6 +84,7 @@ public class AlunoService implements IService<Aluno, Integer> {
      *
      * @param id
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void delete(Integer id) {
         alunoRepository.deleteById(id);
