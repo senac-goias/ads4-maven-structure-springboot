@@ -26,7 +26,8 @@ public class AlunoResource implements IResource<Aluno, Integer> {
      * @return
      */
     @PostMapping(
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE,
+                        MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
     @Override
@@ -45,11 +46,10 @@ public class AlunoResource implements IResource<Aluno, Integer> {
      * @return
      */
     @GetMapping(
-            value = "/{id}",
+            value = "/{id}", //http://localhost:8080/api/v1/aluno/1
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @Override
-    public Aluno get(@PathVariable Integer id) {
-        
+    public Aluno get(@PathVariable("id") Integer id) {
         return alunoService.get(id);
     }
 
@@ -58,6 +58,9 @@ public class AlunoResource implements IResource<Aluno, Integer> {
      *
      * @return
      */
+    @GetMapping(
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
     @Override
     public List<Aluno> get() {
         return alunoService.get();
@@ -70,9 +73,13 @@ public class AlunoResource implements IResource<Aluno, Integer> {
      * @param entity
      * @return
      */
+    @PutMapping(
+            value = "/{id}",
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
     @Override
-    public Aluno update(Integer id, Aluno entity) {
-
+    public Aluno update(@PathVariable Integer id, @RequestBody Aluno entity) {
         return alunoService.update(id, entity);
     }
 
@@ -81,8 +88,9 @@ public class AlunoResource implements IResource<Aluno, Integer> {
      *
      * @param id
      */
+    @DeleteMapping(value = "/{id}")
     @Override
-    public void delete(Integer id) {
+    public void delete(@PathVariable Integer id) {
         alunoService.delete(id);
     }
 }
