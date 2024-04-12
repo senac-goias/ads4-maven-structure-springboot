@@ -21,10 +21,6 @@ import java.util.List;
 @RestController //inicida que é uma camada para api
 @RequestMapping("api/v1/aluno")
 @Tag(name = "aluno", description = "documentação do resource aluno")
-/*@Tags({
-        @Tag(name = "conta", description = "documentação ao resource conta"),
-        @Tag(name = "investimento", description = "documentação para conta de investimento")
-})*/
 public class AlunoResource implements IResource<Aluno, Integer> {
 
     @Autowired //faz a injeção de dependência
